@@ -11,5 +11,6 @@ export interface ServiceLog {
   partName: string;
   mileage: number;
   date: string;
+  carId: number;
   status: "Done" | "Planned";
 }

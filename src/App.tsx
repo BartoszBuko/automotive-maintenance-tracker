@@ -1,9 +1,39 @@
 import { useState } from "react";
-import type { Car, ServiceLog } from "./assets/types";
+import type { ServiceLog } from "./assets/types";
 import { cars } from "./data";
 
 function App() {
   const [selectedCar, setSelectedCar] = useState(cars[0]);
+  const [logs, setLogs] = useState<ServiceLog[]>([
+    {
+      id: "1",
+      partName: "Timing Belt Replacement",
+      mileage: 180000,
+      date: "2026-02-11",
+      carId: 5,
+      status: "Planned",
+    },
+  ]);
+
+  const [form, setForm] = useState({ partName: "", mileage: "" });
+
+  const handleAddService = () => {
+    if (!form.partName || !form.mileage) return;
+
+    const newEntry: ServiceLog = {
+      id: Date.now().toString(),
+      partName: form.partName,
+      mileage: Number(form.mileage),
+      date: new Date().toISOString().split("T")[0],
+      carId: selectedCar.id,
+      status: "Done",
+    };
+
+    setLogs([newEntry, ...logs]);
+    setForm({ partName: "", mileage: "" });
+  };
+
+  const filteredLogs = logs.filter((log) => log.carId === selectedCar.id);
   return (
     <>
       <div className="min-h-screen w-screen bg-[#0a0a0a] text-white font-sans p-4 md:p-10">
@@ -59,14 +89,25 @@ function App() {
                 <input
                   type="text"
                   placeholder="Part Name (e.g. Oil Change)"
+                  value={form.partName}
+                  onChange={(e) =>
+                    setForm({ ...form, partName: e.target.value })
+                  }
                   className="flex-1 bg-black border border-zinc-800 p-3 rounded focus:outline-none focus:border-purple-500 transition-colors"
                 />
                 <input
                   type="number"
                   placeholder="Mileage"
+                  value={form.mileage}
+                  onChange={(e) =>
+                    setForm({ ...form, mileage: e.target.value })
+                  }
                   className="w-full md:w-32 bg-black border border-zinc-800 p-3 rounded focus:outline-none focus:border-purple-500 transition-colors"
                 />
-                <button className="bg-purple-600 hover:bg-purple-500 px-6 py-3 rounded font-bold transition-all uppercase text-sm tracking-wider">
+                <button
+                  onClick={handleAddService}
+                  className="bg-purple-600 hover:bg-purple-500 px-6 py-3 rounded font-bold transition-all uppercase text-sm tracking-wider"
+                >
                   Push
                 </button>
               </div>
@@ -76,24 +117,36 @@ function App() {
               <h2 className="text-zinc-400 uppercase text-xs font-bold mb-4 tracking-widest">
                 // Log History
               </h2>
-              <div className="bg-zinc-900/20 border-l-2 border-purple-500 p-4 flex justify-between items-center group hover:bg-zinc-900/40 transition-all">
-                <div>
-                  <p className="font-bold text-lg text-zinc-200">
-                    Timing Belt Replacement
-                  </p>
-                  <p className="text-xs text-zinc-500 font-mono">
-                    2026-02-11 | {selectedCar.model} Unit
-                  </p>
-                </div>
-                <div className="text-right">
-                  <p className="text-purple-500 font-mono font-bold">
-                    180,000 KM
-                  </p>
-                  <span className="text-[10px] uppercase bg-zinc-800 px-2 py-1 rounded">
-                    Verified
-                  </span>
-                </div>
-              </div>
+
+              {filteredLogs.length > 0 ? (
+                filteredLogs.map((log) => (
+                  <div
+                    key={log.id}
+                    className="bg-zinc-900/20 border-l-2 border-purple-500 p-4 flex justify-between items-center group hover:bg-zinc-900/40 transition-all"
+                  >
+                    <div>
+                      <p className="font-bold text-lg text-zinc-200">
+                        {log.partName}
+                      </p>
+                      <p className="text-xs text-zinc-500 font-mono">
+                        {log.date} | {selectedCar.model} Unit
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-purple-500 font-mono font-bold">
+                        {log.mileage.toLocaleString()} KM
+                      </p>
+                      <span className="text-[10px] uppercase bg-zinc-800 px-2 py-1 rounded">
+                        {log.status}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-zinc-600 italic text-sm p-4 text-center border border-dashed border-zinc-800 rounded">
+                  No service records for this unit.
+                </p>
+              )}
             </div>
           </section>
         </main>
