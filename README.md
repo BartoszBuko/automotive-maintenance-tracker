@@ -33,7 +33,7 @@ git clone https://github.com/BartoszBuko/automotive-maintenance-tracker.git
 cd ./automotive-maintenance-tracker
 ```
 
-2. Open files in browser.
+2. Type <code>npn run start</code> in your terminal
 
 And that's all!
 
