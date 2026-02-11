@@ -40,13 +40,11 @@ function App() {
             <h1 className="text-3xl font-bold tracking-tighter uppercase italic text-purple-500">
               Service_Tracker
             </h1>
-            <p className="text-zinc-500 text-sm italic">
-              Status: Performance Optimized
-            </p>
+            <p className="text-zinc-500 text-sm italic">Track your services</p>
           </div>
           <div className="text-right">
             <span className="text-xs text-zinc-500 block uppercase tracking-widest">
-              Selected Unit
+              Selected car
             </span>
             <p className="text-lg font-mono">
               {selectedCar.brand} {selectedCar.model}
@@ -142,7 +140,7 @@ function App() {
                 ))
               ) : (
                 <p className="text-zinc-600 italic text-sm p-4 text-center border border-dashed border-zinc-800 rounded">
-                  No service records for this unit.
+                  No service records for this car.
                 </p>
               )}
             </div>
