@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ServiceLog } from "./assets/types";
 import { cars } from "./data";
 
 function App() {
   const [selectedCar, setSelectedCar] = useState(cars[0]);
-  const [logs, setLogs] = useState<ServiceLog[]>([
-    {
-      id: "1",
-      partName: "Timing Belt Replacement",
-      mileage: 180000,
-      date: "2026-02-11",
-      carId: 5,
-      status: "Planned",
-    },
-  ]);
+  const [logs, setLogs] = useState<ServiceLog[]>(() => {
+    const savedLogs = localStorage.getItem("service_logs");
+    return savedLogs ? JSON.parse(savedLogs) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("service_logs", JSON.stringify(logs));
+  }, [logs]);
 
   const [form, setForm] = useState({ partName: "", mileage: "" });
 
@@ -26,7 +24,7 @@ function App() {
       mileage: Number(form.mileage),
       date: new Date().toISOString().split("T")[0],
       carId: selectedCar.id,
-      status: "Done",
+      status: "Planned",
     };
 
     setLogs([newEntry, ...logs]);
