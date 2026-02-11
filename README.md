@@ -33,7 +33,7 @@ git clone https://github.com/BartoszBuko/automotive-maintenance-tracker.git
 cd ./automotive-maintenance-tracker
 ```
 
-2. Type <code>npn run start</code> in your terminal
+2. Type <code>npm run start</code> in your terminal
 
 And that's all!
 
