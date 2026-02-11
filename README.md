@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# Automotive maintenance tracker 👋
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div style="display: flex;">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/BartoszBuko/automotive-maintenance-tracker">
+  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/BartoszBuko/automotive-maintenance-tracker">
+</div>
 
-Currently, two official plugins are available:
+## About 👀
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img src="https://socialify.git.ci/BartoszBuko/automotive-maintenance-tracker/image?custom_description=Track+your+car+services&custom_language=React&description=1&language=1&name=1&owner=1&pattern=Solid&theme=Dark" width="640" height="320" />
 
-## React Compiler
+Service Tracker. <br/>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Mobile version: yes!
 
-## Expanding the ESLint configuration
+## How can I try it? 🤔
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Try now on: https://maintenancetrack.netlify.app/ <br/>
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalation steps 📋
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Copy this repository
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+gh repo clone BartoszBuko/automotive-maintenance-tracker
+cd ./automotive-maintenance-tracker
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+or
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+git clone https://github.com/BartoszBuko/automotive-maintenance-tracker.git
+cd ./automotive-maintenance-tracker
+```
+
+2. Open files in browser.
+
+And that's all!
+
+## About UX/UI 🖌️
+
+I made design all by myself
+
+![image](./githubimages/desktop-page.png)
+![image](./githubimages/mobile-page.png)
+
+<br>
+
+## Technological facilities 🛠️
+
+- React
+- TypeScript 5.9.3
+- TailWindCSS
