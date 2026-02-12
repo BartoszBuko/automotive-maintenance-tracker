@@ -13,11 +13,18 @@ Service Tracker. <br/>
 
 Mobile version: yes!
 
+### Key Features 🚀
+* **Real-time Maintenance Tracking:** Add and manage service logs for multiple cars.
+* **Persistent Data:** Uses `localStorage` to ensure your data survives browser restarts.
+* **Fully Responsive:** Optimized for both desktop and mobile devices.
+* **Modern Tech Stack:** Leveraging the power of React Hooks and Tailwind CSS.
+
+
 ## How can I try it? 🤔
 
 Try now on: https://maintenancetrack.netlify.app/ <br/>
 
-## Instalation steps 📋
+## Installation steps 📋
 
 1. Copy this repository
 
@@ -50,4 +57,4 @@ I made design all by myself
 
 - React
 - TypeScript 5.9.3
-- TailWindCSS
+- TailWind CSS
